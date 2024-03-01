@@ -6,4 +6,5 @@ Built project with:
  - JavaScript
  - Typescript
  - Next JS
+ - React
    
