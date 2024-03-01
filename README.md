@@ -7,4 +7,5 @@ Built project with:
  - Typescript
  - Next JS
  - React
+ - Firebase
    
