@@ -33,7 +33,7 @@ const NavBar = () => {
                 items-center
                 gap-8
                 md:gap-12">
-                <div>CartCounter</div>
+                <div>CartCount</div>
                 <div>UserMenu</div>
               </div>
             </div>
