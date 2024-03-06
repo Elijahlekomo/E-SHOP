@@ -8,4 +8,5 @@ Built project with:
  - Next JS
  - React
  - Firebase
+ - Material UI
    
