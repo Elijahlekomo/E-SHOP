@@ -1,5 +1,5 @@
 ## __About the project__  
-This a Ecommerce website.  
+Full stack E-commerce website in progress.  
 Built project with:   
  - HTML
  - CSS
