@@ -1,5 +1,6 @@
 "use client";
 
+<<<<<<< Updated upstream
 import Button from "@/app/components/products/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
@@ -9,32 +10,47 @@ import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { MdCheckCircle } from "react-icons/md";
+=======
+import React from "react";
+//import Button from "@/app/components/products/Button";
+//import ProductImage from "@/app/components/products/ProductImage";
+//import SetColor from "@/app/components/products/SetColor";
+//import SetQuantity from "@/app/components/products/SetQuantity";
+//import { useCart } from "@/hooks/useCart";
+//import { Rating } from "@mui/material";
+//import { useRouter } from "next/navigation";
+//import { useCallback, useEffect, useState } from "react";
+//import { MdCheckCircle } from "react-icons/md";
+>>>>>>> Stashed changes
 
 interface ProductDetailsProps {
   product: any;
 }
+console.log("eoo");
 
-export type CartProductType = {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  brand: string;
-  selectedImg: SelectedImgType;
-  quantity: number;
-  price: number;
-};
+// export type CartProductType = {
+//   id: string;
+//   name: string;
+//   description: string;
+//   category: string;
+//   brand: string;
+//   selectedImg: SelectedImgType;
+//   quantity: number;
+//   price: number;
+// };
 
-export type SelectedImgType = {
-  color: string;
-  colorCode: string;
-  image: string;
-};
+// export type SelectedImgType = {
+//   color: string;
+//   colorCode: string;
+//   image: string;
+// };
 
-const Horizontal = () => {
-  return <hr className="w-[30%] my-2" />;
-};
+// const Horizontal = () => {
+//   return <hr className="w-[30%] my-2" />;
+// };
+
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+<<<<<<< Updated upstream
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
@@ -64,51 +80,85 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       }
     }
   }, [cartProducts]);
+=======
+  //const {cartTotalQty} = useCart();
+  //const { handleAddProductToCart, cartProducts } = useCart();
+  //const [isProductInCart, setIsProductInCart] = useState(false);
+  // const [cartProduct, setCartProduct] = useState<CartProductType>({
+  //   id: product.id,
+  //   name: product.name,
+  //   description: product.description,
+  //   category: product.category,
+  //   brand: product.brand,
+  //   selectedImg: { ...product.images[0] },
+  //   quantity: 1,
+  //   price: product.price,
+  // });
 
-  const productRating =
-    product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
-    product.reviews.length;
+  //const router = useRouter();
+>>>>>>> Stashed changes
 
-  const handleColorSelect = useCallback(
-    (value: SelectedImgType) => {
-      setCartProduct((prev) => {
-        return { ...prev, selectedImg: value };
-      });
-    },
-    [cartProduct.selectedImg]
-  );
+  //console.log(cartProducts);    
+  // useEffect(() => {
+  //   setIsProductInCart(false);
 
-  const handleQtyIncrease = useCallback(() => {
-    if (cartProduct.quantity === 99) {
-      return;
-    }
+  //   if (cartProducts) {
+  //     const existingIndex = cartProducts.findIndex(
+  //      // (item) => item.id === product.id
+  //     );
 
-    setCartProduct((prev) => {
-      return { ...prev, quantity: prev.quantity++ };
-    });
-  }, [cartProduct]);
+  //     if (existingIndex > -1) {
+  //       setIsProductInCart(true);
+  //     }
+  //   }
+  // }, [cartProducts]);
 
-  const handleQtyDecrease = useCallback(() => {
-    if (cartProduct.quantity === 1) {
-      return;
-    }
+  // const productRating =
+  //   product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
+  //   product.reviews.length;
 
-    setCartProduct((prev) => {
-      return { ...prev, quantity: prev.quantity-- };
-    });
-  }, [cartProduct]);
+  // const handleColorSelect = useCallback(
+  //   (value: SelectedImgType) => {
+  //     setCartProduct((prev) => {
+  //       return { ...prev, selectedImg: value };
+  //     });
+  //   },
+  //   [cartProduct.selectedImg]
+  // );
+
+  // const handleQtyIncrease = useCallback(() => {
+  //   if (cartProduct.quantity === 99) {
+  //     return;
+  //   }
+
+  //   setCartProduct((prev) => {
+  //     return { ...prev, quantity: ++prev.quantity };
+  //   });
+  // }, [cartProduct]);
+
+  // const handleQtyDecrease = useCallback(() => {
+  //   if (cartProduct.quantity === 1) {
+  //     return;
+  //   }
+
+  //   setCartProduct((prev) => {
+  //     return { ...prev, quantity: --prev.quantity };
+  //   });
+  // }, [cartProduct]);
+  console.log("house");
 
   return (
+
     <div
       className="grid grid-cols-1
     md:grid-cols-2 gap-12"
     >
-      <ProductImage
+      {/* <ProductImage
         cartProduct={cartProduct}
         product={product}
         handleColorSelect={handleColorSelect}
-      />
-      <div
+      /> */}
+      {/* <div
         className="flex flex-col gap-1
       text-slate-500 text-sm"
       >
@@ -120,7 +170,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         </h2>
         <div className="flex items-center gap-2">
           <Rating value={productRating} readOnly />
-          <div>{product.reviews.lenght} reviews</div>
+          <div>{product.reviews.length} reviews</div>
         </div>
         <Horizontal />
         <div className="text-justify">{product.description}</div>
@@ -137,6 +187,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <Horizontal />
         {isProductInCart ? (
           <>
+<<<<<<< Updated upstream
           <p className="mb-2 text-slate-500 flex items-center-gap-1">
             <MdCheckCircle className="text-teal-400" size={20}/>
             <span>Product added to cart</span>
@@ -149,6 +200,23 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           </div>
           </>
         ) : (
+=======
+            <p className="mb-2 text-slate-500 flex items-center gap-1">
+              <MdCheckCircle className="text-teal-400" size={20} />
+              <span>Product added to cart</span>
+            </p>
+            <div className="max-w-[300px]">
+              <Button
+                label="View Cart"
+                outline
+                onClick={() => {
+                  //router.push("/cart");
+                }}
+              />
+            </div>
+          </>
+        
+>>>>>>> Stashed changes
           <>
             <SetColor
               cartProduct={cartProduct}
@@ -161,6 +229,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               handleQtyIncrease={handleQtyIncrease}
               handleQtyDecrease={handleQtyDecrease}
             />
+<<<<<<< Updated upstream
             <Horizontal />
             <div className="max-w-[300px]">
               <Button
@@ -171,8 +240,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           </>
         )}
       </div>
+=======
+           <Horizontal />
+            <div className="max-w-[300px]">
+              <Button
+                labe l="Add To Cart"
+                 onClick={() => handleAddProductToCart(cartProduct)}
+              />
+            </div>
+          </>
+        
+      </div> */}
+>>>>>>> Stashed changes
     </div>
   );
 };
 
-export default ProductDetails;
+export default React.memo(ProductDetails);

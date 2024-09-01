@@ -24,6 +24,7 @@ export default function RootLayout({
         className={`${poppins.className}
         text-state-700`}
       >
+<<<<<<< Updated upstream
         <Toaster
           toastOptions={{
             style: {
@@ -31,6 +32,14 @@ export default function RootLayout({
               color: "#fff",
             },
           }}
+=======
+        <Toaster toastOptions={{
+          style:{
+            background: "rgb(51 65 85)",
+            color: "#fff",
+          },
+        }}
+>>>>>>> Stashed changes
         />
         <CartProvider>
           <div className="flex flex-col min-h-screen">
@@ -43,3 +52,4 @@ export default function RootLayout({
     </html>
   );
 }
+

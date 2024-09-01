@@ -1,35 +1,38 @@
-'use client'
+"use client";
 
-import { CartProductType } from "@/app/product/[productId]/ProductDetails";
+//import { CartProductType } from "@/app/product/[productId]/ProductDetails";
 
-interface SetQtyProps{
-    cartCounter?: boolean;
-    cartProduct: CartProductType;
-    handleQtyIncrease: () => void;
-    handleQtyDecrease: () => void;
+interface SetQtyProps {
+  cartCounter?: boolean;
+  //cartProduct: CartProductType;
+  handleQtyIncrease: () => void;
+  handleQtyDecrease: () => void;
 }
 
-const btnStyles = 'border-[1.2px] border-slate-300 px-2 rounded';
+const btnStyles = "border-[1.2px] border-slate-300 px-2 rounded";
 const SetQuantity: React.FC<SetQtyProps> = ({
-    cartCounter,
-    cartProduct,
-    handleQtyIncrease,
-    handleQtyDecrease,
+  cartCounter,
+ // cartProduct,
+  handleQtyIncrease,
+  handleQtyDecrease,
 }) => {
-    return (
+  return (
     <div className="flex gap-8 items-center">
-        {cartCounter? null: <div
-        className="font-semibold">Quantity:</div>}
-        <div className="flex gap-4 items-center
-        text-base">
-            <button onClick={handleQtyDecrease}
-            className={btnStyles}>-</button>
-            <div>{cartProduct.quantity}</div>
-            <button onClick={handleQtyIncrease} className=
-            {btnStyles}>+</button>
-        </div>
+      {cartCounter ? null : <div className="font-semibold">Quantity:</div>}
+      <div
+        className="flex gap-4 items-center
+        text-base"
+      >
+        <button onClick={handleQtyDecrease} className={btnStyles}>
+          -
+        </button>
+       {/* <div>{cartProduct.quantity}</div> */}
+        <button onClick={handleQtyIncrease} className={btnStyles}>
+          +
+        </button>
+      </div>
     </div>
-    );
-}
- 
+  );
+};
+
 export default SetQuantity;
