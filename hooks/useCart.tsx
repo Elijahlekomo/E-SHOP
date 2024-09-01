@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { CartProductType } from "@/app/product/[productId]/ProductDetails";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import {toast} from 'react-hot-toast'
@@ -7,23 +6,6 @@ type CartContextType = {
   cartTotalQty: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
-=======
-//import { CartProductType } from "@/app/product/[productId]/ProductDetails";
-import { product } from "@/app/utils/product";
-import {
-  createContext,
- // useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { toast } from "react-hot-toast";
-
-type CartContextType = {
-  cartTotalQty: number;
- // cartProducts: CartProductType[] | null;
-  //handleAddProductToCart: (product: CartProductType) => void;
->>>>>>> Stashed changes
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -34,7 +16,6 @@ interface Props {
 
 export const CartContextProvider = (props: Props) => {
   const [cartTotalQty, setCartTotalQty] = useState(10);
-<<<<<<< Updated upstream
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
@@ -66,43 +47,8 @@ export const CartContextProvider = (props: Props) => {
     cartTotalQty,
     cartProducts,
     handleAddProductToCart,
-=======
-  // const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
-  //   null
-  // );
-
-  useEffect(() => {
-    const cartItems: any = localStorage.getItem("eShopCartItems");
-    //const cProducts: CartProductType[] | null = JSON.parse(cartItems);
-
-   // setCartProducts(cProducts);
-  }, []);
-
-  // const handleAddProductToCart = useCallback((product: CartProductType) => {
-  //   setCartProducts((prev) => {
-  //     let updatedCart;
-
-  //     if (prev) {
-  //       updatedCart = [...prev, product];
-  //     } else {
-  //       updatedCart = [product];
-  //     }
-
-  //     toast.success("Product added to cart");
-  //     localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
-  //     return updatedCart;
-  //   });
-  // }, []);
-
-  const value = {
-    cartTotalQty,
-    // cartProducts,
-    // handleAddProductToCart,
->>>>>>> Stashed changes
   };
-   
-  return <CartContext.Provider value={value} {...
-    props} />;
+  return <CartContext.Provider value={value} {...props} />;
 };
 
 export const useCart = () => {
