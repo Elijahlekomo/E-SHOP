@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/app/components/products/Button";
+import Button from "@/app/components/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuantity from "@/app/components/products/SetQuantity";
@@ -160,7 +160,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               <span>Product added to cart</span>
             </p>
             <div className="max-w-[300px]">
-              <Button
+              <Button small outline
                 label="View cart"
                 onClick={() => {
                   router.push("/cart");
