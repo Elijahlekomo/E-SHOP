@@ -9,4 +9,6 @@ Built project with:
  - React
  - Firebase
  - Material UI
+
+## Screenshot of the project     
    
