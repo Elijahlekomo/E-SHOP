@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { CartProductType } from "../product/[productId]/ProductDetails";
-import { formatPrice } from "../utils/formatPrice";
-import { truncateText } from "../utils/trucanteText";
+import { formatPrice } from "../../utils/formatPrice";
+import { truncateText } from "../../utils/trucanteText";
 import Image from "next/image";
 import SetQuantity from "../components/products/SetQuantity";
 import { useCart } from "@/hooks/useCart";
@@ -12,7 +12,11 @@ interface ItemContentProps {
   item: CartProductType;
 }
 const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
-  const { handleRemoveProductFromCart, handleCartQtyIncrease, handleCartQtyDecrease } = useCart();
+  const {
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
+  } = useCart();
   return (
     <div
       className="
@@ -69,8 +73,12 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
         <SetQuantity
           cartCounter={true}
           cartProduct={item}
-          handleQtyIncrease={() => {handleCartQtyIncrease(item);}}
-          handleQtyDecrease={() => {handleCartQtyDecrease(item);}}
+          handleQtyIncrease={() => {
+            handleCartQtyIncrease(item);
+          }}
+          handleQtyDecrease={() => {
+            handleCartQtyDecrease(item);
+          }}
         />
       </div>
       <div className="justify-self-end font-semi-bold">

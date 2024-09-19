@@ -13,11 +13,12 @@ export const metadata: Metadata = {
   description: "Ecommerce app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}) {  
+  
   return (
     <html lang="en">
       <body
@@ -43,4 +44,3 @@ export default function RootLayout({
     </html>
   );
 }
-

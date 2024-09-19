@@ -6,7 +6,7 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import Heading from "../components/Heading";
 import Button from "../components/Button";
 import ItemContent from "./ItemContent";
-import { formatPrice } from "../utils/formatPrice";
+import { formatPrice } from "../../utils/formatPrice";
 
 const CartClient = () => {
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
