@@ -9,6 +9,8 @@ Built project with:
  - React
  - Firebase
  - Material UI
+   Database: Mongodb;
+   Payment: stripe
 
 ## Screenshot of the project     
    
