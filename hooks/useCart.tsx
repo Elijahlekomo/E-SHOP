@@ -38,7 +38,7 @@ export const CartContextProvider = (props: Props) => {
   console.log("amount", cartTotalAmount);
 
   useEffect(() => {
-    const cartItems: any = localStorage.getItem("eShopCart");
+    const cartItems: any = localStorage.getItem("eShopCartItems");
     const cProduct: CartProductType[] | null = JSON.parse(cartItems);
 
     setCartProducts(cProduct);
