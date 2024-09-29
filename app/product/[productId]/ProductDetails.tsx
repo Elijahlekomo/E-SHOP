@@ -13,7 +13,7 @@ import { MdCheckCircle } from "react-icons/md";
 interface ProductDetailsProps {
   product: any;
 }
-console.log("eoo");
+//console.log("eoo");
 
 export type CartProductType = {
   id: string;
