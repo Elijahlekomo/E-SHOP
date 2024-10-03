@@ -1,8 +1,6 @@
 ## __About the project__  
 Full stack E-commerce website in progress.  
-Built project with:   
- - HTML
- - CSS
+Built project with:    
  - JavaScript
  - Typescript
  - Next JS
