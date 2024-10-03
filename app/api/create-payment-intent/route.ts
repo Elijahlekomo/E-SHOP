@@ -14,7 +14,7 @@ const calculateOrderAmount = (items: CartProductType[]) => {
   const totalPrice = items.reduce((acc, item) => {
     const itemTotal = item.price * item.quantity;
     return acc * itemTotal;
-  }, 0);
+  },2); 
 
   return totalPrice;
 };
@@ -50,8 +50,8 @@ export async function POST(request: Request) {
         { amount: total }
       );
 
-    //udate the order
-    const [existing_oder, updated_order] = await Promise.all([
+      //udate the order
+      const [existing_order, updated_order] = await Promise.all([
         prisma.order.findFirst({
           where: { paymentIntentId: payment_intent_id },
         }),
@@ -63,16 +63,16 @@ export async function POST(request: Request) {
           },
         }),
       ]);
-  
-      if (!existing_oder) {
+
+      if (!existing_order) {
         return NextResponse.json(
           { error: "Invalid Payment Intent" },
           { status: 400 }
         );
       }
-      
+
       return NextResponse.json({ paymentIntent: updated_intent });
-    }   
+    }
   } else {
     //create the intent
     const paymentIntent = await stripe.paymentIntents.create({
