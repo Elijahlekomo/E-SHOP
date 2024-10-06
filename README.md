@@ -1,6 +1,7 @@
 ## __About the project__  
 Full stack E-commerce website in progress.  
 Built project with:    
+ -Tailwind CSS
  - JavaScript
  - Typescript
  - Next JS
