@@ -2,6 +2,7 @@
 Full stack E-commerce website in progress.  
 Built project with:    
  - JavaScript
+ - Tailwind CSS
  - Typescript
  - Next JS
  - React
