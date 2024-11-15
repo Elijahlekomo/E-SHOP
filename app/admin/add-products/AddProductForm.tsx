@@ -7,8 +7,8 @@ import CustomCheckBox from "@/app/components/inputs/CustomCheckBox";
 import Input from "@/app/components/inputs/Input";
 import SelectColor from "@/app/components/inputs/SelectColor";
 import TextArea from "@/app/components/inputs/TextArea";
-import { categories } from "@/app/utils/Categories";
-import { colors } from "@/app/utils/Colors";
+import { categories } from "@/utils/Categories";
+import { colors } from "@/utils/Colors";
 import firebaseApp from "@/libs/firebase";
 import { error } from "console";
 import { useCallback, useEffect, useState } from "react";
@@ -150,7 +150,8 @@ const AddProductForm = () => {
     await handleImageUploads();
     const productData = { ...data, images: uploadedImages };
 
-    axios.post("/api/product", productData)
+    axios
+      .post("/api/product", productData)
       .then(() => {
         toast.success("Product created");
         setIsProductCreated(true);

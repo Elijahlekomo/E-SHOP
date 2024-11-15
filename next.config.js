@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = {   
     images:{
-        domains: ["m.media-amazon.com", "lh3.googleusercontent.com"],
+        //domains: ["firebasestorage.googleapis.com","lh3.googleusercontent.com"],
+        domains: ["m.media-amazon.com", "lh3.googleusercontent.com", "firebasestorage.googleapis.com"],
     },
 };
 
