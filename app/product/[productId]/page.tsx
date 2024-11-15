@@ -4,14 +4,17 @@ import ListRating from "./ListRating";
 import { products } from "@/utils/products";
 import getProductById from "@/actions/getProductById";
 import NullData from "@/app/components/NullData";
+import AddRating from "./AddRating";
+import { getCurrentUser } from "@/actions/getCurrentUser";
 
-interface IParams {
+interface IPrams {
   productId?: string;
 }
 
-const Product = async ({ params }: { params: IParams }) => {
-  const productId = params.productId ?? ''; // add a default value if productId is undefined
+const Product = async ({ params }: { params: IPrams }) => {
+  const productId = params.productId ?? ""; // add a default value if productId is undefined
   const product = await getProductById({ productId });
+  const user = await getCurrentUser();
 
   if (!product)
     return <NullData title="Oops! Product with the given id does not exits" />;
@@ -21,7 +24,7 @@ const Product = async ({ params }: { params: IParams }) => {
       <Container>
         <ProductDetails product={product} />
         <div className="flex flex-col mt-20 gap-4">
-          <div>Add Rating</div>
+          <AddRating product={product} user={user} />
           <ListRating product={product} />
         </div>
       </Container>
