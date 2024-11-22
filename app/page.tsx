@@ -3,7 +3,7 @@ export const revalidate = 0;
 import Container from "./components/Container";
 import HomeBanner from "./components/HomeBanner";
 import ProductCard from "./components/products/ProductCard";
-import { products } from "../utils/products";
+//import { products } from "../utils/products";
 import { truncateText } from "../utils/trucanteText";
 import getProducts, { IProductParams } from "@/actions/getProducts";
 import NullData from "./components/NullData";
