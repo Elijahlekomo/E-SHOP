@@ -1,3 +1,5 @@
+export const revalidate = 0;
+
 import Container from "./components/Container";
 import HomeBanner from "./components/HomeBanner";
 import ProductCard from "./components/products/ProductCard";
@@ -44,7 +46,7 @@ interface HomeProps{
         >
           {shuffledProducts.map((product: any) => {
             // eslint-disable-next-line react/jsx-key
-            return <ProductCard data={product} />;
+            return <ProductCard data={product}  key={product.id}/>;
           })}
         </div>
       </Container>
