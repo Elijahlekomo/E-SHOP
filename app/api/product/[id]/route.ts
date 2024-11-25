@@ -1,22 +1,23 @@
+export const revalidate = 0;
+
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 
-
 export async function DELETE(
-    request: Request,
-    {params}: {params: {id: string}}
-){
-    const currentUser = await getCurrentUser();
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const currentUser = await getCurrentUser();
 
-    if (!currentUser) return NextResponse.error();
-  
-    if (currentUser.role !== "ADMIN") {
-      return NextResponse.error();
-    }
+  if (!currentUser) return NextResponse.error();
 
-    const product = await prisma?.product.delete({
-        where: {id: params.id}
-    })
+  if (currentUser.role !== "ADMIN") {
+    return NextResponse.error();
+  }
 
-    return NextResponse.json(product)
+  const product = await prisma?.product.delete({
+    where: { id: params.id },
+  }); 
+
+  return NextResponse.json(product);
 }
