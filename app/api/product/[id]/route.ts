@@ -1,11 +1,14 @@
-export const revalidate = 0;
-
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { NextResponse } from "next/server";
+//import { prisma } from "@/lib/prisma";
+
+interface Params {
+  id: string;
+}
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Params }
 ) {
   const currentUser = await getCurrentUser();
 
@@ -17,7 +20,7 @@ export async function DELETE(
 
   const product = await prisma?.product.delete({
     where: { id: params.id },
-  }); 
+  });
 
   return NextResponse.json(product);
 }
