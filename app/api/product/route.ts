@@ -1,9 +1,10 @@
+export const revalidate = 0;
+
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 
 export async function POST(request: Request) {
-  
   const currentUser = await getCurrentUser();
 
   if (!currentUser) return NextResponse.error();
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
       category,
       inStock,
       images,
-      price: parseFloat(price)
+      price: parseFloat(price),
     },
   });
 
@@ -37,13 +38,13 @@ export async function PUT(request: Request) {
     return NextResponse.error();
   }
 
-  const body = await request.json()
-  const {id, inStock} = body
+  const body = await request.json();
+  const { id, inStock } = body;
 
   const product = await prisma.product.update({
-    where: {id: id},
-    data:{inStock}
-  })
+    where: { id: id },
+    data: { inStock },
+  });
 
-  return NextResponse.json(product)
+  return NextResponse.json(product);
 }
