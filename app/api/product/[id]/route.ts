@@ -1,6 +1,6 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { NextResponse } from "next/server";
-//import { prisma } from "@/lib/prisma";
+import  prisma  from "@/libs/prismadb";
 
 interface Params {
   id: string;
@@ -8,7 +8,7 @@ interface Params {
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Params; }
+  { params }: { params: Params }
 ) {
   const currentUser = await getCurrentUser();
 
