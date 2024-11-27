@@ -1,18 +1,21 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { NextResponse } from "next/server";
-import  prisma  from "@/libs/prismadb";
+//import  prisma  from "@/libs/prismadb";
 
-interface Params {
-  id: string;
-}
+type Context = {
+  params: {
+    id: string;
+  };
+};
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: Params }
-) {
+export async function DELETE(request: Request, context: Context) {
+  const { params } = context; // Destructure params from the context
+
   const currentUser = await getCurrentUser();
 
-  if (!currentUser) return NextResponse.error();
+  if (!currentUser) {
+    return NextResponse.error();
+  }
 
   if (currentUser.role !== "ADMIN") {
     return NextResponse.error();
