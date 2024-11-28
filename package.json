@@ -50,6 +50,6 @@
     "prisma": "^5.22.0"
   },
   "prisma": {
-  "schema": "./schema.prisma"
+    "schema": "./schema.prisma"
   }
 }
