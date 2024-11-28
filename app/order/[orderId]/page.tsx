@@ -7,7 +7,8 @@ interface IPrams {
   orderId?: string;
 }
 
-const Order = async ({ params }: { params: IPrams }) => {
+const Order = async (props: { params: Promise<IPrams> }) => {
+  const params = await props.params;
   const order = await getOderById(params);
 
   if (!order) return <NullData title="No Order"></NullData>;
