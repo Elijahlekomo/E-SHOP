@@ -143,13 +143,13 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
 
     await handleImageDelete();
 
-    // axios.delete(`/api/product/${id}`).then((res) => {
-    //   toast.success("Product deleted");
-    //   router.refresh();
-    // }).catch((err) => {
-    //   toast.error("Failed to delete product")
-    //   console.log(err);
-    // });
+    axios.delete(`/api/product/${id}`).then((res) => {
+      toast.success("Product deleted");
+      router.refresh();
+    }).catch((err) => {
+      toast.error("Failed to delete product")
+      console.log(err);
+    });
   }, []);
 
   return (
