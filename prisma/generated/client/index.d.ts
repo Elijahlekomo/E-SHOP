@@ -230,7 +230,6 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
-  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -269,8 +268,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.22.0
-   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+   * Prisma Client JS version: 6.0.0
+   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
    */
   export type PrismaVersion = {
     client: string
@@ -6925,8 +6924,8 @@ export namespace Prisma {
     rating?: IntFilter<"Review"> | number
     comment?: StringFilter<"Review"> | string
     createdDate?: DateTimeFilter<"Review"> | Date | string
-    product?: XOR<ProductRelationFilter, ProductWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ReviewOrderByWithRelationInput = {
@@ -6950,8 +6949,8 @@ export namespace Prisma {
     rating?: IntFilter<"Review"> | number
     comment?: StringFilter<"Review"> | string
     createdDate?: DateTimeFilter<"Review"> | Date | string
-    product?: XOR<ProductRelationFilter, ProductWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
@@ -6994,7 +6993,7 @@ export namespace Prisma {
     paymentIntentId?: StringFilter<"Order"> | string
     products?: CartProductTypeCompositeListFilter | CartProductTypeObjectEqualityInput[]
     address?: XOR<AddressNullableCompositeFilter, AddressObjectEqualityInput> | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type OrderOrderByWithRelationInput = {
@@ -7025,7 +7024,7 @@ export namespace Prisma {
     createDate?: DateTimeFilter<"Order"> | Date | string
     products?: CartProductTypeCompositeListFilter | CartProductTypeObjectEqualityInput[]
     address?: XOR<AddressNullableCompositeFilter, AddressObjectEqualityInput> | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "paymentIntentId">
 
   export type OrderOrderByWithAggregationInput = {
@@ -7076,7 +7075,7 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type AccountOrderByWithRelationInput = {
@@ -7116,7 +7115,7 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "provider_providerAccountId">
 
   export type AccountOrderByWithAggregationInput = {
@@ -7898,12 +7897,12 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type ProductRelationFilter = {
+  export type ProductScalarRelationFilter = {
     is?: ProductWhereInput
     isNot?: ProductWhereInput
   }
 
-  export type UserRelationFilter = {
+  export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
@@ -9478,50 +9477,6 @@ export namespace Prisma {
   }
 
 
-
-  /**
-   * Aliases for legacy arg types
-   */
-    /**
-     * @deprecated Use UserCountOutputTypeDefaultArgs instead
-     */
-    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ProductCountOutputTypeDefaultArgs instead
-     */
-    export type ProductCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProductCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CartProductTypeDefaultArgs instead
-     */
-    export type CartProductTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CartProductTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ImageDefaultArgs instead
-     */
-    export type ImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ImageDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use AddressDefaultArgs instead
-     */
-    export type AddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AddressDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use UserDefaultArgs instead
-     */
-    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ProductDefaultArgs instead
-     */
-    export type ProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProductDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ReviewDefaultArgs instead
-     */
-    export type ReviewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ReviewDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use OrderDefaultArgs instead
-     */
-    export type OrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrderDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use AccountDefaultArgs instead
-     */
-    export type AccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AccountDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
