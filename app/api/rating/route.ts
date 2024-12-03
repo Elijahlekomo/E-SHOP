@@ -1,5 +1,5 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { Review } from "@prisma/client";
+import { Review } from "@/prisma/generated/client";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request){
