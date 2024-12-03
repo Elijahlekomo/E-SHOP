@@ -5,7 +5,7 @@ import Heading from "@/app/components/Heading";
 import Input from "@/app/components/inputs/Input";
 import { SafeUser } from "@/types";
 import { Rating } from "@mui/material";
-import { Order, Product, Review } from "@prisma/client";
+import { Order, Product, Review } from "@/prisma/generated/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -73,17 +73,17 @@ const AddRating: React.FC<AddRatingProps> = ({ product, user }) => {
 
   if (!user || !product) return null;
 
-    const deliveredOrder = user?.orders.some(
-      (order) =>
-        order.products.find((item) => item.id === product.id) &&
-        order.deliveryStatus === "delivered"
-    );
+  const deliveredOrder = user?.orders.some(
+    (order) =>
+      order.products.find((item) => item.id === product.id) &&
+      order.deliveryStatus === "delivered"
+  );
 
-    const userReview = product?.reviews.find((review: Review) => {
-      return review.userId === user.id;
-    });
+  const userReview = product?.reviews.find((review: Review) => {
+    return review.userId === user.id;
+  });
 
-    if(userReview || !deliveredOrder) return null
+  if (userReview || !deliveredOrder) return null;
 
   return (
     <div className="flex flex-col gap-2 max-w-[500px]">

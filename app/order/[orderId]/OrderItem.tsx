@@ -2,7 +2,7 @@
 
 import { formatPrice } from "@/utils/formatPrice";
 import { truncateText } from "@/utils/trucanteText";
-import { CartProductType } from "@prisma/client";
+import { CartProductType } from "@/prisma/generated/client";
 import { truncate } from "fs";
 import Image from "next/image";
 

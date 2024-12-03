@@ -1,6 +1,6 @@
 "use client";
 
-import { Order, Product, User } from "@prisma/client";
+import { Order, Product, User } from "@/prisma/generated/client";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Heading from "@/app/components/Heading";
 import Status from "@/app/components/Status";
@@ -129,7 +129,7 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="flex mt-3 justify-between gap-4 w-full">            
+          <div className="flex mt-3 justify-between gap-4 w-full">
             <ActionBtn
               icon={MdRemoveRedEye}
               onClick={() => {
@@ -140,8 +140,8 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
         );
       },
     },
-  ];  
-  
+  ];
+
   return (
     <div className="max-w-[1150px] m-auto text-xl">
       <div className="mb-4 mt-8">

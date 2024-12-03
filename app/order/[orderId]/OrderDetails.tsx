@@ -3,7 +3,7 @@
 import Heading from "@/app/components/Heading";
 import Status from "@/app/components/Status";
 import { formatPrice } from "@/utils/formatPrice";
-import { Order } from "@prisma/client";
+import { Order } from "@/prisma/generated/client";
 import moment from "moment";
 import { MdAccessTimeFilled, MdDeliveryDining, MdDone } from "react-icons/md";
 import OrderItem from "./OrderItem";
