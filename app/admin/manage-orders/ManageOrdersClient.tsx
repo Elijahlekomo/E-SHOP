@@ -1,6 +1,6 @@
 "use client";
 
-import { Order, Product, User } from "@prisma/client";
+import { Order, Product, User } from "@/prisma/generated/client";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Heading from "@/app/components/Heading";
 import Status from "@/app/components/Status";
