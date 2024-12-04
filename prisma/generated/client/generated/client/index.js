@@ -22,7 +22,7 @@ const {
   defineDmmfProperty,
   Public,
   getRuntime
-} = require('./runtime/library.js')
+} = require('./runtime/binary.js')
 
 
 const Prisma = {}
@@ -177,7 +177,8 @@ const config = {
       "fromEnvVar": null
     },
     "config": {
-      "engineType": "library"
+      "engineType": "binary",
+      "dataProxy": "true"
     },
     "binaryTargets": [
       {
@@ -214,8 +215,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "datasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./generated/client\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\nmodel User {\n  id             String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  name           String?\n  email          String?   @unique\n  emailVerified  DateTime?\n  image          String?\n  hashedPassword String?\n  // Optional for WebAuthn support\n  //Authenticator Authenticator[]\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n  role           Role      @default(USER)\n\n  accounts Account[]\n  orders   Order[]\n  reviews  Review[]\n}\n\nmodel Product {\n  id          String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  name        String\n  description String\n  price       Float\n  brand       String\n  category    String\n  inStock     Boolean\n  images      Image[]\n  reviews     Review[]\n}\n\nmodel Review {\n  id          String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId      String   @db.ObjectId\n  productId   String   @db.ObjectId\n  rating      Int\n  comment     String\n  createdDate DateTime @default(now())\n\n  product Product @relation(fields: [productId], references: [id])\n  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel Order {\n  id              String            @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId          String            @db.ObjectId\n  amount          Float\n  currency        String\n  status          String\n  deliveryStatus  String?\n  createDate      DateTime          @default(now())\n  paymentIntentId String            @unique\n  products        CartProductType[]\n  address         Address?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\ntype CartProductType {\n  id          String\n  name        String\n  description String\n  category    String\n  brand       String\n  selectedImg Image\n  quantity    Int\n  price       Float\n}\n\ntype Image {\n  color     String\n  colorCode String\n  image     String\n}\n\ntype Address {\n  city        String\n  country     String\n  line1       String\n  line2       String?\n  postal_code String\n  state       String\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nmodel Account {\n  id                String  @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId            String  @db.ObjectId\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String? @db.String\n  access_token      String? @db.String\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String? @db.String\n  session_state     String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([provider, providerAccountId])\n}\n\n// Optional for WebAuthn support\n// model Authenticator {\n//   credentialID         String  @id @map(\"_id\")\n//   userId               String  @db.ObjectId\n//   providerAccountId    String\n//   credentialPublicKey  String\n//   counter              Int\n//   credentialDeviceType String\n//   credentialBackedUp   Boolean\n//   transports           String?\n\n//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n//   @@unique([userId, credentialID])\n// }\n",
-  "inlineSchemaHash": "5b87aefea20425289a8c5d9b3efdd71d492812b5a0893428ec133ed15555f6de",
+  "inlineSchema": "datasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./generated/client\"\n  dataProxy     = true\n  engineType    = \"binary\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\nmodel User {\n  id             String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  name           String?\n  email          String?   @unique\n  emailVerified  DateTime?\n  image          String?\n  hashedPassword String?\n  // Optional for WebAuthn support\n  //Authenticator Authenticator[]\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n  role           Role      @default(USER)\n\n  accounts Account[]\n  orders   Order[]\n  reviews  Review[]\n}\n\nmodel Product {\n  id          String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  name        String\n  description String\n  price       Float\n  brand       String\n  category    String\n  inStock     Boolean\n  images      Image[]\n  reviews     Review[]\n}\n\nmodel Review {\n  id          String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId      String   @db.ObjectId\n  productId   String   @db.ObjectId\n  rating      Int\n  comment     String\n  createdDate DateTime @default(now())\n\n  product Product @relation(fields: [productId], references: [id])\n  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel Order {\n  id              String            @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId          String            @db.ObjectId\n  amount          Float\n  currency        String\n  status          String\n  deliveryStatus  String?\n  createDate      DateTime          @default(now())\n  paymentIntentId String            @unique\n  products        CartProductType[]\n  address         Address?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\ntype CartProductType {\n  id          String\n  name        String\n  description String\n  category    String\n  brand       String\n  selectedImg Image\n  quantity    Int\n  price       Float\n}\n\ntype Image {\n  color     String\n  colorCode String\n  image     String\n}\n\ntype Address {\n  city        String\n  country     String\n  line1       String\n  line2       String?\n  postal_code String\n  state       String\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nmodel Account {\n  id                String  @id @default(auto()) @map(\"_id\") @db.ObjectId\n  userId            String  @db.ObjectId\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String? @db.String\n  access_token      String? @db.String\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String? @db.String\n  session_state     String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([provider, providerAccountId])\n}\n\n// Optional for WebAuthn support\n// model Authenticator {\n//   credentialID         String  @id @map(\"_id\")\n//   userId               String  @db.ObjectId\n//   providerAccountId    String\n//   credentialPublicKey  String\n//   counter              Int\n//   credentialDeviceType String\n//   credentialBackedUp   Boolean\n//   transports           String?\n\n//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n//   @@unique([userId, credentialID])\n// }\n",
+  "inlineSchemaHash": "1ba9c9a94849ec3b4f1069c57b3c242e8a43ae78500c2d25e0cba6d32829ba06",
   "copyEngine": true
 }
 
@@ -241,7 +242,7 @@ defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = undefined
 
 
-const { warnEnvConflicts } = require('./runtime/library.js')
+const { warnEnvConflicts } = require('./runtime/binary.js')
 
 warnEnvConflicts({
     rootEnvPath: config.relativeEnvPaths.rootEnvPath && path.resolve(config.dirname, config.relativeEnvPaths.rootEnvPath),
@@ -253,12 +254,12 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "prisma/generated/client/generated/client/query_engine-windows.dll.node")
+path.join(__dirname, "query-engine-windows");
+path.join(process.cwd(), "prisma/generated/client/generated/client/query-engine-windows")
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
-path.join(process.cwd(), "prisma/generated/client/generated/client/libquery_engine-rhel-openssl-3.0.x.so.node")
+path.join(__dirname, "query-engine-rhel-openssl-3.0.x");
+path.join(process.cwd(), "prisma/generated/client/generated/client/query-engine-rhel-openssl-3.0.x")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/generated/client/generated/client/schema.prisma")

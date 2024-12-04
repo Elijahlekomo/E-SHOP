@@ -51,6 +51,7 @@
     "prisma": "^6.0.0"
   },
   "prisma": {
-    "schema": "./prisma/generated/client/schema.prisma"
+    "schema": "./prisma/generated/client/schema.prisma",
+    "binaryTargets": ["native", "rhel-openssl-3.0.x"]
   }
 }
